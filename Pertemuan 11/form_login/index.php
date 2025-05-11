@@ -5,6 +5,15 @@ if (isset($_SESSION['user'])) {
     header("Location: dashboard.php");
     exit;
 }
+
+if (isset($_SESSION['login_error'])) {
+    echo "<script>
+            document.addEventListener('DOMContentLoaded', function() {
+                alert('".addslashes($_SESSION['login_error'])."');
+            });
+          </script>";
+    unset($_SESSION['login_error']);
+}
 ?>
 
 <!DOCTYPE html>
